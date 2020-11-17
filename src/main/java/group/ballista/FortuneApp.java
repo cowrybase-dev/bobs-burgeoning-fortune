@@ -53,10 +53,7 @@ public class FortuneApp {
         if (currency != null) {
             portfolio.setCurrency(currency);
         }
-        propertiesFromFile(file).entrySet().forEach(entry -> {
-            portfolio.addAsset(new PortfolioItem(new CryptoCurrency((String) entry.getKey()),
-                    (String) entry.getValue()));
-        });
+        propertiesFromFile(file).forEach((key, value) -> portfolio.addAsset(new PortfolioItem(new CryptoCurrency((String) key), (String) value)));
         return portfolio;
     }
 }

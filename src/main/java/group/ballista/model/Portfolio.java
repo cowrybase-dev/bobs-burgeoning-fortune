@@ -46,16 +46,24 @@ public class Portfolio {
         }
 
         final StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("====== Portfolio (in " + getCurrency() + ") ======\n\n");
+        stringBuilder.append("====== Portfolio (in ").append(getCurrency()).append(") ======\n\n");
         this.cryptoCurrencies.forEach(item -> {
             final CryptoCurrency asset = item.getCryptoCurrency();
-            stringBuilder.append("Asset: " + asset.getTicker()
-                    + "; Bag size: " + item.getBagSize().doubleValue()
-                    + "; Unit price: " + asset.getAssetPrice(getCurrency()).doubleValue()
-                    + "; Total value: " + item.getBagValue(getCurrency()).doubleValue() + "\n");
+            stringBuilder.append("Asset: ")
+                    .append(asset.getTicker())
+                    .append("; Bag size: ")
+                    .append(item.getBagSize().doubleValue())
+                    .append("; Unit price: ")
+                    .append(asset.getAssetPrice(getCurrency()).doubleValue())
+                    .append("; Total value: ")
+                    .append(item.getBagValue(getCurrency()).doubleValue())
+                    .append("\n");
         });
-        stringBuilder.append("\n*** Total Portfolio estimated value: "
-                + getCurrency() + " " +  getPortfolioValue().doubleValue() + " ***");
+        stringBuilder.append("\n*** Total Portfolio estimated value: ")
+                .append(getCurrency())
+                .append(" ")
+                .append(getPortfolioValue().doubleValue())
+                .append(" ***");
         return stringBuilder.toString();
     }
 }

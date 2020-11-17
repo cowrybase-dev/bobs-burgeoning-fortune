@@ -3,7 +3,7 @@ package group.ballista.model;
 import java.math.BigDecimal;
 
 public class PortfolioItem {
-    private CryptoCurrency cryptoCurrency;
+    private final CryptoCurrency cryptoCurrency;
     private BigDecimal bagSize;
 
     public PortfolioItem(CryptoCurrency cryptoCurrency, String bagSize) {
