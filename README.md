@@ -1,4 +1,4 @@
-Usage: java -jar jarfile bobs_crypto.txt [options]
+Usage: java -jar app.jar /path/to/bobs_crypto.txt [options]
 
 
 where options include:
