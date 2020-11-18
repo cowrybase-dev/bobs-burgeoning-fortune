@@ -11,6 +11,12 @@ import static group.ballista.model.Constants.*;
  */
 public class ResponseParser {
 
+    /**
+     * Parses json output and returns a Map containing
+     * keys and corresponding values
+     * @param json string
+     * @return map containing json elements
+     */
     public Map<String, String> contentFromJson(final String json) {
         if (json != null && !json.isBlank()) {
             final Map<String, String> result = new HashMap<>();

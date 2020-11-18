@@ -14,6 +14,10 @@ import java.util.logging.Logger;
 
 import static group.ballista.model.Constants.*;
 
+/**
+ * The PriceConnector is the interface to the REST API
+ * that gives the price of a crypto asset
+ */
 public class PriceConnector {
 
     private final static Logger LOGGER = Logger.getLogger(PriceConnector.class.getName());
@@ -34,6 +38,12 @@ public class PriceConnector {
         return INSTANCE;
     }
 
+    /**
+     * Get the crypto asset price using the asset ticker and a given currency
+     * @param asset ticker
+     * @param displayCurrency
+     * @return the current price of an asset
+     */
     public BigDecimal getCryptoAssetPrice(final String asset, final String displayCurrency) {
         try {
             return tryToGetCryptoPrice(asset, displayCurrency);
@@ -60,6 +70,7 @@ public class PriceConnector {
             final HttpResponse<String> response = HttpClient.newHttpClient()
                     .send(request, HttpResponse.BodyHandlers.ofString());
 
+            // Success. Some error cases are also handled here as per the API specification
             if (response.statusCode() == 200) {
                 final Map<String, String> jsonContent = responseParser.contentFromJson(response.body());
                 if (jsonContent.containsKey(currency.toUpperCase())) {
@@ -79,6 +90,13 @@ public class PriceConnector {
         }
     }
 
+    /**
+     * Utility method used to log error messages depending
+     * on different scenarios
+     * @param jsonContent
+     * @param ticker
+     * @param currency
+     */
     private void logErrorMessage(final Map<String, String> jsonContent, final String ticker, final String currency) {
         if (jsonContent.containsKey(PARAM_WITH_ERROR_KEY)) {
             final String paramWithError = jsonContent.get(PARAM_WITH_ERROR_KEY);

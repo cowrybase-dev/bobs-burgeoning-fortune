@@ -6,6 +6,10 @@ import java.util.List;
 
 import static group.ballista.model.Constants.DEFAULT_CURRENCY;
 
+/**
+ * Wrapper class that contains a portfolio
+ * of crypto assets
+ */
 public class Portfolio {
     private final List<PortfolioItem> cryptoCurrencies;
 

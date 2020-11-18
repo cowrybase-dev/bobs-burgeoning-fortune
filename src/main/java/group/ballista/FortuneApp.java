@@ -37,6 +37,12 @@ public class FortuneApp {
         System.out.println(help);
     }
 
+    /**
+     * This method reads the given file and parses it into
+     * a Properties object
+     * @param file
+     * @return Properties
+     */
     private static Properties propertiesFromFile(final String file) {
         final Properties cryptoAssetFileAsProperties = new Properties();
         try {
@@ -48,6 +54,12 @@ public class FortuneApp {
         return cryptoAssetFileAsProperties;
     }
 
+    /**
+     * This method returns a Portfolio object from the content of a file
+     * @param file
+     * @param currency
+     * @return a Portfolio
+     */
     private static Portfolio portfolioFromFile(final String file, final String currency) {
         final Portfolio portfolio = new Portfolio();
         if (currency != null) {
